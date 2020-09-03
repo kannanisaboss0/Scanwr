@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
-import *as Permissions from 'expo-permissions'
+import * as Permissions from 'expo-permissions'
 import {BarCodeScanner} from 'expo-barcode-scanner'
  export default class Scan extends React.Component{
      constructor(){
@@ -32,17 +32,17 @@ import {BarCodeScanner} from 'expo-barcode-scanner'
 
      render(){
          const p=this.state.hasPermissionScan
-             if(buttonState==="clicked"&&this.state.hasPermissionScan){
+             if(this.state.buttonState==="clicked"&&this.state.hasPermissionScan){
                  return(
-             <View>
-                 <TouchableOpacity onPress={this.getCamera}>
-                    <Text>Scan</Text>
-                 </TouchableOpacity>
+             <View >
+                 <BarCodeScanner style={StyleSheet.absoluteFillObject} onScan={this.handleScanner}/>
+                 
              </View>
                  )
              }
-             else if(buttonState==="normal"){
+             else if(this.state.buttonState==="normal"){
                  return(
+                     <View>
                  <Text>
                      {
                       p===true?
@@ -51,7 +51,13 @@ import {BarCodeScanner} from 'expo-barcode-scanner'
                      }
 
                  </Text>
+                  <TouchableOpacity onPress={this.getCamera}>
+                  <Text>Scan</Text>
+               </TouchableOpacity>
+               </View>
                  )
              }
+             return null
      }
+     
  }
