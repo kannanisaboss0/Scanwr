@@ -13,8 +13,9 @@ export default function App() {
   );
 }
 const TabNavigator= createBottomTabNavigator({
+  Lister:{screen:List},
   Scanner:{screen:Scan},
-  List:{screen:List}
+  
   
 
 })
